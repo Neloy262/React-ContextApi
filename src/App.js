@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import ClickCounter from "./components/ClickCounter";
+import Context from "./lib/Context";
+import Counter from "./components/Counter";
+import Section from "./components/Section";
+import { useState } from "react";
 function App() {
+  let [dummy, setDummy] = useState({ name: "Neloy", age: "24" });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Counter
+        render={(count, incrementCount) => {
+          return <ClickCounter count={count} incrementCount={incrementCount} />;
+        }}
+      />
+      <Context.Provider value={dummy} children={<Section />}></Context.Provider>
     </div>
   );
 }
