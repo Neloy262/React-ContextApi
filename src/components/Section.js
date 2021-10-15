@@ -2,6 +2,7 @@ import React from "react";
 import HoverCounter from "./HoverCounter";
 import Counter from "./Counter";
 import Context from "../lib/Context";
+import UserContext from "./UserContext";
 function Section() {
   return (
     <div>
@@ -9,7 +10,18 @@ function Section() {
       <Counter
         render={(count, incrementCount) => {
           return (
-            <Context.Consumer>
+            // <Context.Consumer>
+            //   {(valueFromApp) => {
+            //     return (
+            //       <HoverCounter
+            //         count={count}
+            //         incrementCount={incrementCount}
+            //         valueFromApp={valueFromApp}
+            //       />
+            //     );
+            //   }}
+            // </Context.Consumer>
+            <UserContext.Consumer>
               {(valueFromApp) => {
                 return (
                   <HoverCounter
@@ -19,7 +31,7 @@ function Section() {
                   />
                 );
               }}
-            </Context.Consumer>
+            </UserContext.Consumer>
           );
         }}
       />
